@@ -1,0 +1,29 @@
+{% load static %}
+
+.input-group {
+    width: 100%;
+}
+.candy-img {
+    width: 200px;
+    transition: transform 1s ease-in;
+}
+.apartment-img {
+    width: 400px;
+    transition: transform 1s ease-in;
+}
+/*class used to assist rendering the search results*/
+.row2 {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-right: -15px;
+	margin-left: -15px
+}
+body {
+    background-color: #ecf0f1;
+}
+img {
+    max-width: 100%;
+    max-height: 100%;
+}

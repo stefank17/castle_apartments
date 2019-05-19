@@ -1,0 +1,13 @@
+.smallimage{
+    width: 15%;
+    height: 15%;
+}
+
+.smallimage:hover {
+	opacity: 0.3;
+	filter: alpha(opacity=30);
+}
+
+.modalimage {
+    width: 100%;
+}

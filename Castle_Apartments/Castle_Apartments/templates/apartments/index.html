@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Apartments - Castle Apartments</title>
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron text-center">
+    <section class="jumbotron text-center">
+        <div class="container">
+          <div class="d-flex justify-content-center">
+            <input class="form-control form-control-dark w-100" type="search" id="search-box" placeholder="Staðsetning">
+              <button type="button" id="search-btn" class="btn btn-primary">Leita</button>
+
+          </div>
+          <div class="d-flex justify-content-center">
+              <select class="custom-select" id="type" required>
+                <option value="">Gerð</option>
+                <option value="fjolbyli">Fjölbýli</option>
+                <option value="einbyli">Einbýli</option>
+              </select>
+              <input class="custom-select" id="rooms" type="number" min="1" max="99" placeholder="Herbergi">
+               <select class="custom-select" id="zip" required>
+                 <option value="">Póstnúmer</option>
+                 <option>101</option>
+                 <option>103</option>
+                 <option>104</option>
+                 <option>105</option>
+                 <option>107</option>
+                 <option>108</option>
+                 <option>109</option>
+                 <option>105</option>        
+                 <option>107</option>      
+                 <option>108</option>        
+                 <option>109</option>        
+                 <option>110</option>        
+                 <option>111</option>        
+                 <option>112</option>        
+                 <option>113</option>        
+                 <option>116</option>    
+                 <option>170</option>        
+                 <option>190</option>
+                 <option>200</option>        
+                 <option>201</option>        
+                 <option>203</option>        
+                 <option>210</option>
+                 <option>220</option>        
+                 <option>221</option>        
+                 <option>225</option>     
+                 <option>230</option>        
+                 <option>233</option>        
+                 <option>235</option>        
+                 <option>240</option>
+                 <option>245</option>
+                 <option>250</option>
+                 <option>260</option>
+                 <option>270</option>        
+                 <option>271</option>        
+                 <option>276</option>    
+                 <option>300</option>
+                 <option>301</option>
+                 <option>310</option>
+                 <option>311</option>
+                 <option>320</option>
+                 <option>340</option>
+                 <option>345</option>
+                 <option>350</option>
+                 <option>355</option>
+                 <option>356</option>
+                 <option>360</option>
+                 <option>370</option>
+                 <option>371</option>
+                 <option>380</option>
+                 <option>400</option>
+                 <option>401</option>
+                 <option>415</option>        
+                 <option>420</option>            
+                 <option>425</option>        
+                 <option>430</option>       
+                 <option>450</option>       
+                 <option>451</option>        
+                 <option>460</option>        
+                 <option>465</option>        
+                 <option>470</option>        
+                 <option>471</option>       
+                 <option>500</option>
+                 <option>510</option>
+                 <option>520</option>
+                 <option>522</option>
+                 <option>523</option>
+                 <option>524</option>
+                 <option>530</option>        
+                 <option>531</option>        
+                 <option>540</option>        
+                 <option>541</option>        
+                 <option>545</option>       
+                 <option>550</option>        
+                 <option>551</option>        
+                 <option>560</option>     
+                 <option>565</option>            
+                 <option>566</option>            
+                 <option>570</option>    
+                 <option>580</option>
+                 <option>600</option>        
+                 <option>601</option>        
+                 <option>603</option>       
+                 <option>610</option>    
+                 <option>611</option>
+                 <option>620</option>
+                 <option>621</option>
+                 <option>625</option>
+                 <option>630</option>
+                 <option>640</option>
+                 <option>641</option>
+                 <option>650</option>
+                 <option>660</option>        
+                 <option>670</option>       
+                 <option>671</option>        
+                 <option>675</option>        
+                 <option>680</option>        
+                 <option>681</option>             
+                 <option>685</option>        
+                 <option>690</option>        
+                 <option>700</option>        
+                 <option>701</option>        
+                 <option>710</option>        
+                 <option>715</option>     
+                 <option>720</option>        
+                 <option>730</option>      
+                 <option>735</option>       
+                 <option>740</option>        
+                 <option>750</option>        
+                 <option>755</option>        
+                 <option>760</option>        
+                 <option>765</option>       
+                 <option>780</option>    
+                 <option>781</option>    
+                 <option>785</option>    
+                 <option>800</option>
+                 <option>801</option>
+                 <option>810</option>        
+                 <option>815</option>        
+                 <option>816</option>            
+                 <option>820</option>        
+                 <option>825</option>        
+                 <option>840</option>       
+                 <option>845</option>           
+                 <option>850</option>        
+                 <option>851</option>        
+                 <option>860</option>        
+                 <option>861</option>        
+                 <option>870</option>        
+                 <option>871</option>        
+                 <option>880</option>
+                 <option>900</option>
+                </select>
+          </div>
+              <div class="d-flex justify-content-center">
+                  <select class="custom-select" id="date_order" required>
+                      <option value="Not_selected">Raða eftir dagsetningu</option>
+                      <option value="time_added">Elsta fyrst</option>
+                      <option value="-time_added">Nýjasta fyrsta</option>
+                    </select>
+                  <select class="custom-select" id="price_order" required>
+                      <option value="Not_selected">Raða eftir verði</option>
+                      <option value="price">Lægsta fyrst</option>
+                      <option value="-price">Hæsta fyrst</option>
+                    </select>
+                  <select class="custom-select" id="address_order" required>
+                      <option value="Not_selected">Raða eftir götuheiti</option>
+                      <option value="address">A-Ö</option>
+                      <option value="-address">Ö-A</option>
+                    </select>
+              </div>
+        </div>
+      </section>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row2">
+
+        {% for apartment in apartments %}
+            {% include 'apartments/single_apartment.html' with apartment=apartment %}
+        {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

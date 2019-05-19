@@ -1,0 +1,18 @@
+form {
+    padding-top: 5%;
+    margin: auto;
+    width: 50%;
+}
+
+#id_password {
+    margin-bottom: 20px;
+}
+
+label[for=id_password] {
+    margin-top: 20px;
+}
+
+label[for=id_profile_image]{
+    margin-top: 20px;
+}
+

@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    <title>{{ apartment.address }} - Castle Apartments</title>
+    <link rel="stylesheet" href="{% static 'css/apartment.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="card-title mb-4">
+        <h2>Myndir af fasteign</h2>
+        <div class="d-flex justify-content-start">
+            {% for apartment_image in apartment.apartmentimage_set.all %}
+                <img src="{{ apartment_image.image }}" style="padding-left: 5px;" class="smallimage" data-toggle="modal" data-target="#myModal{{ forloop.counter }}">
+                <div id="myModal{{ forloop.counter }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <img class="modalimage" src="{{ apartment_image.image }}" class="img-responsive">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div style="padding-bottom: 10px ;">
+        <a href="/users/profile/{{ apartment.owner.id }}"class="btn btn-secondary" >Seljanda prófíll</a>
+        {% if user.is_authenticated %}
+            {% if apartment.owner_id != user.id %}
+                <a href="/apartments/{{ apartment.id }}/purchase" class="btn btn-secondary" >Kaupa íbúð</a>
+
+            {% else %}
+                <a href="/apartments/{{ apartment.id }}/delete" class="btn btn-secondary" onclick="return confirm('Ertu viss að þú viljir eyða?')">Eyða íbúð</a>
+            {% endif %}
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Upplýsingar</a>
+                </li>
+            </ul>
+            <div class="tab-content ml-1" id="myTabContent">
+                <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-2 col-5">
+                            <label style="font-weight:bold;">Götunafn:</label>
+                        </div>
+                        <div class="col-md-8 col-6">
+                            {{ apartment.address }}
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-3 col-md-2 col-5">
+                            <label style="font-weight:bold;">Póstnúmer:</label>
+                        </div>
+                        <div class="col-md-8 col-6">
+                            {{ apartment.zip_code }}
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-3 col-md-2 col-5">
+                            <label style="font-weight:bold;">Lýsing:</label>
+                        </div>
+                        <div class="col-md-8 col-6">
+                            {{ apartment.description }}
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-3 col-md-2 col-5">
+                            <label style="font-weight:bold;">Verð:</label>
+                        </div>
+                        <div class="col-md-8 col-6">
+                            {{ apartment.price }} kr.
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-3 col-md-2 col-5">
+                            <label style="font-weight:bold;">Stærð:</label>
+                        </div>
+                        <div class="col-md-8 col-6">
+                            {{ apartment.size }} fermetrar
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-3 col-md-2 col-5">
+                            <label style="font-weight:bold;">Fjöldi herbergja:</label>
+                        </div>
+                        <div class="col-md-8 col-6">
+                            {{ apartment.rooms }}
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-3 col-md-2 col-5">
+                            <label style="font-weight:bold;">Tegund af fasteign:</label>
+                        </div>
+                        <div class="col-md-8 col-6">
+                            {{ apartment.type }}
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

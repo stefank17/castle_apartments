@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Profile - Castle Apartments</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="card-title mb-4">
+        <div class="d-flex justify-content-start">
+            <div class="image-container">
+                {% if userprofile.profile.profile_image == "" %}
+                    <img src="{% static 'images/defaultprofilepic.png' %}" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+                {% else %}
+                    <img src="{{ userprofile.profile.profile_image }}" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+                {% endif %}
+                <div class="middle">
+
+                </div>
+            </div>
+            <div class="userData ml-3">
+                <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">{{ userprofile.username }}</h2>
+                {% if userprofile.id == user.id %}
+                    <a href="{% url 'edit_profile' %}"class="btn btn-secondary" >Uppfæra prófíl</a>
+                {% endif  %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Upplýsingar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="eignir-tab" data-toggle="tab" href="#eignir" role="tab" aria-controls="eignir" aria-selected="false">Eignir</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="leitarsaga-tab" data-toggle="tab" href="#leitarsaga" role="tab" aria-controls="leitarsaga" aria-selected="false">Leitarsaga</a>
+                </li>
+            </ul>
+            <div class="tab-content ml-1" id="myTabContent">
+                <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-2 col-5">
+                            <label style="font-weight:bold;">Notendanafn:</label>
+                        </div>
+                        <div class="col-md-8 col-6">
+                            {{ userprofile.username }}
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-3 col-md-2 col-5">
+                            <label style="font-weight:bold;">Netfang:</label>
+                        </div>
+                        <div class="col-md-8 col-6">
+                            {{ userprofile.email }}
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-3 col-md-2 col-5">
+                            <label style="font-weight:bold;">Lýsing:</label>
+                        </div>
+                        <div class="col-md-8 col-6">
+                            {{ userprofile.profile.description }}
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+                <div class="tab-pane fade" id="leitarsaga" role="tabpanel" aria-labelledby="leitarsaga-tab">
+                    {% for apt in user_history %}
+                        {% if forloop.counter < 13 %}
+                            {% include 'apartments/single_apartment.html' with apartment=apt %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="tab-pane fade" id="eignir" role="tabpanel" aria-labelledby="eignir-tab">
+                    {% if not apartments_owned %}
+                        <p>Engar eignir</p>
+                    {% else %}
+                        {% for apt in apartments_owned %}
+                            {% include 'apartments/single_apartment.html' with apartment=apt %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

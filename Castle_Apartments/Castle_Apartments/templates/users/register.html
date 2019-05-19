@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Login - Castle Apartments</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form class="form-signin" method="post">
+        {% csrf_token %}
+{#            form works with djangos UserCreationForm, if works will redirect you to login#}
+            {{ form }}
+{#          <div class="text-center mb-4">#}
+{#            <h1 class="h3 mb-3 font-weight-normal">Nýskráning</h1>#}
+{#            <p></p>#}
+{#          </div>#}
+{#          <div class="form-label-group">#}
+{#            <input type="text" id="inputName" class="form-control" placeholder="Nafn" required="true" autofocus="">#}
+{#          </div>#}
+{##}
+{#          <div class="form-label-group">#}
+{#            <input type="email" id="inputEmail" class="form-control" placeholder="Netfang" required="false" autofocus="">#}
+{#          </div>#}
+{##}
+{#          <div class="form-label-group">#}
+{#            <input type="password" id="inputPassword" class="form-control" placeholder="Lykilorð" required="true">#}
+{#          </div>#}
+          <button class="btn btn-lg btn-primary btn-block" type="submit" value="Sign up">Nýskrá</button>
+        </form>
+    </div>
+    <script src="{% static 'js/register.js' %}"></script>
+{% endblock %}

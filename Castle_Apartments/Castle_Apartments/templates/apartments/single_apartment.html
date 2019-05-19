@@ -1,0 +1,12 @@
+<div class="col-md-4 apartmentdiv">
+    <a href="/apartments/{{ apartment.id }}" style="color: black;">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body" style="border-style: solid; border-color: black; border-width: 0.5%; background-color: lightgray;">
+                <img class="candy-img" src="{{apartment.apartmentimage_set.first.image}}" style="border-style: solid; border-color: black;"/>
+                <h4>{{ apartment.address }}</h4>
+                <p> {{ apartment.price }} kr.</p>
+                <p> {{ apartment.size }} fermetrar</p>
+            </div>
+        </div>
+    </a>
+</div>
